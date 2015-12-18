@@ -16,13 +16,6 @@
 
 <body ng-controller="MainController as mainCtrl">
   <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
     <a class="navbar-brand">White Elephant Exchange</a>
     <div class="navbar-collapse">
       <ul class="nav navbar-nav navbar-left">
@@ -33,8 +26,43 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#login">Google LogIn</a>
+            <$ if (user) { $>
+            <!-- <li><img class="profile-pic" src="<$= user.prof_picture $>"><a href="/logout">Logout</a></li> -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong><$= user.prof_name $></strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <img class="profile-pic" src="<$= user.prof_picture $>">
 
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><$= user.prof_name $></p>
+                                        <p class="text-left small"><$= user.prof_email $></p>
+                                        <p class="text-left">
+                                            <a href="/logout" class="btn btn-primary btn-block btn-sm">Log Out</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+              </ul>
+            <$ } else { $>
+            <li>
+              <a href="/auth/google">Login with Google</a>
+              </li>
+            <$ } $>
         </li>
       </ul>
     </div>
@@ -96,12 +124,6 @@
     <div ui-view></div>
   </div>
 
-  <h1> HEY OVER HERE </h1>
-  <$ if (user) { $>
-  <li><a href="/logout">Logout</a></li>
-  <$ } else { $>
-  <li><a href="/auth/google">Login with Google</a></li>
-  <$ } $>
 
   <!-- Angular scripts -->
 

@@ -13,10 +13,11 @@ var giftSchema = new mongoose.Schema({
 
 // User Schema
 var userSchema = new mongoose.Schema({
-  name:  String,
-  email: String,
-  gifts: [giftSchema],
+  prof_name:  String,
+  prof_email: String,
+  prof_picture: String,
   googleID: String,
+  gifts: [giftSchema],
   created: {type: Date, default: Date.now}
 });
 

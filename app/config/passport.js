@@ -18,12 +18,14 @@ module.exports = function(passport) {
         } else {
           // we have a new user via OAuth!
           var newUser = new User({
-            name: profile.displayName,
-            email: profile.emails[0].value,
+            prof_name: profile.displayName,
+            prof_email: profile.emails[0].value,
+            prof_picture: profile.photos[0].value,
             googleId: profile.id
           });
           newUser.save(function(err) {
             if (err) return done(err);
+            console.log(newUser);
             return done(null, newUser);
           });
         }
