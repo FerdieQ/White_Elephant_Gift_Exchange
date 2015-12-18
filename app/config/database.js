@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var env = require('./environment');
 
 // Use different database URIs based on whether an env var exists.
-var dbUri = env.DATABASE_URL ||
-            'mongodb://localhost/' + env.SAFE_TITLE;
+var dbUri = env.DATABASE_URL;
 
 if (!env.DATABASE_URL) {
   // check that MongoD is running...
